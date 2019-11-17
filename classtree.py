@@ -2,6 +2,7 @@ import os
 import ast
 import sys
 from graphviz import Digraph
+from pathlib import Path
 
 vertices, edges = set(), set()
 
@@ -19,20 +20,24 @@ class ClassVisitor(ast.NodeVisitor):
             edges.add((parent, node.name))
 
 
-for file in os.listdir(sys.argv[1]):
-    file = os.path.join(sys.argv[1], file)
-    if not file.endswith(".py"):
-        continue
-    with open(file, "r") as fl:
-        code = fl.read()
-    tree = ast.parse(code)
-    ClassVisitor().visit(tree)
+root = Path(sys.argv[1])
+for r, d, f in os.walk(root):
+    for file in f:
+        file = root / r / file
+        if os.path.isfile(file):
+            if not str(file).endswith(".py"):
+                continue
+            with open(file, "r") as fl:
+                code = fl.read()
+            tree = ast.parse(code)
+            ClassVisitor().visit(tree)
 
-dot = Digraph(comment="Class Hierarchy")
+dot = Digraph(comment="Class Hierarchy", format="svg")
 
 for v in vertices:
-    dot.node(v, v)
+    dot.node(v)
 
 for a, b in edges:
     dot.edge(a, b)
 dot.view()
+dot.save()
