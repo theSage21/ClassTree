@@ -1,11 +1,11 @@
-import os
-from itertools import cycle
-import ast
-from collections import defaultdict
-import sys
-from graphviz import Digraph, ENGINES
-from pathlib import Path
 import argparse
+import ast
+import json
+import os
+import sys
+from collections import defaultdict
+from itertools import cycle
+from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -15,6 +15,7 @@ parser.add_argument("--list-orphans", default=False, action="store_true")
 parser.add_argument(
     "--engine", default="dot", choices=ENGINES, action="store", type=str
 )
+parser.add_argument("--html", default=False, action="store_true")
 args = parser.parse_args()
 vertices, edges = set(), set()
 detail_map = defaultdict(dict)
@@ -36,6 +37,7 @@ class ClassVisitor(ast.NodeVisitor):
                 parent = base.id
             else:
                 parent = str(base)
+            vertices.add(parent)
             edges.add((parent, node.name))
 
 
@@ -92,14 +94,29 @@ else:
             ),
         )
     )
+    if args.html:
+        name2idx = {name: index for index, name in enumerate(vertices)}
+        with open("data.json", "w") as fl:
+            json.dump(
+                {
+                    "nodes": [
+                        {"id": name2idx[name], "name": name} for name in vertices
+                    ],
+                    "links": [
+                        {"source": name2idx[a], "target": name2idx[b]} for a, b in edges
+                    ],
+                },
+                fl,
+            )
+    else:
 
-    dot = Digraph(name="ClassTree", format="svg", engine=args.engine)
-    for k, v in colormap.items():
-        dot.node(k, color=v)
-    for v in vertices:
-        color = colormap[str(detail_map[v]["src_path"])]
-        dot.node(v, color=color)
+        dot = Digraph(name="ClassTree", format="svg", engine=args.engine)
+        for k, v in colormap.items():
+            dot.node(k, color=v)
+        for v in vertices:
+            color = colormap[str(detail_map[v]["src_path"])]
+            dot.node(v, color=color)
 
-    for a, b in edges:
-        dot.edge(a, b)
-    dot.view()
+        for a, b in edges:
+            dot.edge(a, b)
+        dot.view()
