@@ -1,0 +1,186 @@
+digraph ClassTree {
+	"/home/arjoonn/work/Storefront/src/batches/forms.py" [color=Black]
+	"/home/arjoonn/work/Storefront/src/batches/views.py" [color=Yellow]
+	"/home/arjoonn/work/Storefront/src/updates/columns.py" [color=Blue]
+	"/home/arjoonn/work/Storefront/src/updates/crumbs.py" [color=Red]
+	"/home/arjoonn/work/Storefront/src/updates/fields.py" [color=Green]
+	"/home/arjoonn/work/Storefront/src/updates/forms.py" [color=Brown]
+	"/home/arjoonn/work/Storefront/src/updates/models.py" [color=Azure]
+	"/home/arjoonn/work/Storefront/src/updates/pagination.py" [color=Ivory]
+	"/home/arjoonn/work/Storefront/src/updates/utils.py" [color=Purple]
+	"/home/arjoonn/work/Storefront/src/updates/view_mixins.py" [color=Orange]
+	"/home/arjoonn/work/Storefront/src/updates/views.py" [color=Maroon]
+	UpdatesNestedLevelRetailersView [color=Maroon]
+	BatchListView [color=Yellow]
+	PaginationError [color=Ivory]
+	UpdatesSyncNewForm [color=Brown]
+	ApiCallDetailView [color=Yellow]
+	UpdatesNestedLevelTerritoryView [color=Maroon]
+	BatchRemoveAllView [color=Maroon]
+	BatchSendView [color=Maroon]
+	UpdatesSyncExistingView [color=Maroon]
+	AlulaScheduleUpdatesGanttNestedColumn [color=Blue]
+	UpdatesNestedLevelMovieTerritoryView [color=Maroon]
+	UpdatesNestedLevelPlatformView [color=Maroon]
+	UpdatesNestedLevelTVSeasonTerritoryView [color=Maroon]
+	BatchNewView [color=Maroon]
+	OrgUpdatesPermEditView [color=Maroon]
+	MappedSelectMultipleField [color=Green]
+	CrumbsMixin [color=Orange]
+	BatchItemRemoveView [color=Maroon]
+	PendingBatchListView [color=Yellow]
+	BatchFilterForm [color=Black]
+	MultipleStructuredNestedTableMixin [color=Orange]
+	UpdateError [color=Azure]
+	GanttColumn [color=Blue]
+	UpdatesNestedLevelTVSeasonView [color=Maroon]
+	BatchItemFilterForm [color=Black]
+	UserUpdatesPermDetailView [color=Maroon]
+	SelectMultipleField [color=Green]
+	BatchItemAddView [color=Maroon]
+	LandingView [color=Yellow]
+	ScheduleUpdatesNestedServiceTypeColumn [color=Blue]
+	ScheduleUpdatesGanttNestedColumn [color=Blue]
+	ScheduleUpdatesSubtypeGanttColumn [color=Blue]
+	Paginator [color=Ivory]
+	PendingBatchFilterForm [color=Black]
+	BatchClearView [color=Maroon]
+	BooleanSelectMultipleField [color=Green]
+	UpdatesSyncNewView [color=Maroon]
+	UpdatesFilterForm [color=Brown]
+	UpdatesListView [color=Maroon]
+	ItemExportView [color=Yellow]
+	ScheduleUpdatesGanttServiceTypeColumn [color=Blue]
+	ScheduleUpdatesGanttColumn [color=Blue]
+	MainServiceTypeColumn [color=Blue]
+	BaseServiceTypeColumn [color=Blue]
+	BatchItemReUpdateView [color=Yellow]
+	UpdatesNestedLevelView [color=Maroon]
+	UpdatesSpreadsheetView [color=Maroon]
+	AddedView [color=Maroon]
+	BaseNestedColumn [color=Blue]
+	Crumb [color=Red]
+	BatchItemSaveView [color=Maroon]
+	ItemListView [color=Yellow]
+	AlulaScheduleUpdatesNestedColumn [color=Blue]
+	EmptyQuery [color=Purple]
+	BaseNestedTableMixin [color=Orange]
+	BatchesMixin [color=Yellow]
+	UpdatesLandingView [color=Maroon]
+	UpdatesPermForm [color=Brown]
+	OrgUpdatesPermForm [color=Brown]
+	UpdatesNestedView [color=Maroon]
+	UpdatesTableView [color=Maroon]
+	BatchView [color=Maroon]
+	UserUpdatesPermEditView [color=Maroon]
+	ScheduleUpdatesNestedColumn [color=Blue]
+	ExportMixin [color=Orange]
+	NestedTableMixin [color=Orange]
+	BatchSaveView [color=Maroon]
+	BatchExportView [color=Yellow]
+	ServiceSubtypeMixin [color=Blue]
+	OrgUpdatesPermDetailView [color=Maroon]
+	ScheduleUpdatesNestedFilterArgsMixin [color=Orange]
+	BooleanField2 [color=Green]
+	NestedColumn [color=Blue]
+	ExpandLevelMixin [color=Orange]
+	BaseScheduleUpdatesServiceTypesColumn [color=Blue]
+	Exception -> PaginationError
+	BaseNestedTableMixin -> MultipleStructuredNestedTableMixin
+	FilterFormMixin -> UpdatesListView
+	BaseForm -> UpdatesPermForm
+	BaseForm -> OrgUpdatesPermForm
+	Column -> GanttColumn
+	BatchesMixin -> ItemListView
+	UserMixin -> UpdatesSpreadsheetView
+	UpdatesNestedLevelTerritoryView -> UpdatesNestedLevelMovieTerritoryView
+	UpdatesNestedLevelView -> UpdatesNestedLevelRetailersView
+	BaseNestedColumn -> AlulaScheduleUpdatesNestedColumn
+	list -> EmptyQuery
+	CrumbsMixin -> UpdatesListView
+	UpdatesNestedLevelTerritoryView -> UpdatesNestedLevelTVSeasonTerritoryView
+	BatchView -> BatchRemoveAllView
+	UpdatesNestedLevelView -> UpdatesNestedLevelPlatformView
+	Column -> BaseServiceTypeColumn
+	SelectMultipleField -> BooleanSelectMultipleField
+	BatchView -> BatchClearView
+	UserMixin -> BatchView
+	Model -> UpdateError
+	View -> ApiCallDetailView
+	View -> UpdatesLandingView
+	ItemListView -> ItemExportView
+	CrumbsMixin -> BatchListView
+	ScheduleUpdatesNestedColumn -> ScheduleUpdatesGanttNestedColumn
+	View -> BatchItemReUpdateView
+	BaseTableMixin -> BaseNestedTableMixin
+	BatchView -> BatchItemRemoveView
+	Column -> ScheduleUpdatesGanttServiceTypeColumn
+	BaseForm -> BatchFilterForm
+	NextUrlMixin -> UpdatesSyncNewView
+	Column -> BaseNestedColumn
+	AlulaScheduleUpdatesNestedColumn -> ScheduleUpdatesNestedColumn
+	<_ast.Attribute object at 0x7f8d30550c50> -> BooleanField2
+	BaseServiceTypeColumn -> BaseScheduleUpdatesServiceTypesColumn
+	OrgMixin -> LandingView
+	TableMixin -> ItemListView
+	BaseNestedTableMixin -> NestedTableMixin
+	UserFlagPermEditView -> UserUpdatesPermEditView
+	UpdatesListView -> UpdatesTableView
+	BatchesMixin -> BatchListView
+	BatchFilterForm -> PendingBatchFilterForm
+	UpdatesNestedView -> UpdatesNestedLevelView
+	OrgMixin -> UpdatesSpreadsheetView
+	<_ast.Attribute object at 0x7f8d304af7f0> -> UpdatesFilterForm
+	UserFlagPermDetailView -> UserUpdatesPermDetailView
+	View -> BatchView
+	BatchListView -> PendingBatchListView
+	GanttColumn -> ScheduleUpdatesGanttColumn
+	Timestamp -> UpdateError
+	UpdatesListView -> UpdatesNestedView
+	TableMixin -> BatchListView
+	OrgMixin -> BatchView
+	ListView -> UpdatesListView
+	OrgMixin -> ItemListView
+	<_ast.Attribute object at 0x7f8d305505c0> -> MappedSelectMultipleField
+	FilterFormMixin -> BatchListView
+	BaseScheduleUpdatesServiceTypesColumn -> ScheduleUpdatesNestedServiceTypeColumn
+	AlulaScheduleUpdatesNestedColumn -> AlulaScheduleUpdatesGanttNestedColumn
+	BatchView -> BatchSendView
+	UpdatesListView -> AddedView
+	NextUrlMixin -> BatchItemReUpdateView
+	BatchView -> BatchNewView
+	CrumbsMixin -> ItemListView
+	Column -> MainServiceTypeColumn
+	Column -> NestedColumn
+	AlulaScheduleUpdatesGanttNestedColumn -> ScheduleUpdatesGanttNestedColumn
+	ListView -> ItemListView
+	ServiceSubtypeMixin -> ScheduleUpdatesSubtypeGanttColumn
+	BatchView -> BatchItemSaveView
+	View -> UpdatesSyncExistingView
+	UserMixin -> UpdatesListView
+	OrgFlagPermDetailView -> OrgUpdatesPermDetailView
+	TableMixin2 -> UpdatesListView
+	BatchListView -> BatchExportView
+	ExportMixin -> ItemExportView
+	BatchView -> BatchItemAddView
+	OrgMixin -> UpdatesListView
+	ListView -> BatchListView
+	OrgMixin -> UpdatesLandingView
+	ScheduleUpdatesGanttColumn -> ScheduleUpdatesSubtypeGanttColumn
+	<_ast.Attribute object at 0x7f8d32348be0> -> SelectMultipleField
+	SelectMultipleField -> MappedSelectMultipleField
+	BatchFilterForm -> BatchItemFilterForm
+	BatchView -> BatchSaveView
+	FilterFormMixin -> BatchItemSaveView
+	BaseForm -> UpdatesSyncNewForm
+	FilterFormMixin -> ItemListView
+	OrgFlagPermEditView -> OrgUpdatesPermEditView
+	View -> UpdatesSpreadsheetView
+	ExportMixin -> BatchExportView
+	UpdatesNestedLevelView -> UpdatesNestedLevelTerritoryView
+	UpdatesNestedLevelView -> UpdatesNestedLevelTVSeasonView
+	View -> LandingView
+	FormView -> UpdatesSyncNewView
+	NextUrlMixin -> BatchView
+	OrgMixin -> BatchListView
+}
