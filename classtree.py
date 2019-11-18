@@ -7,15 +7,13 @@ from collections import defaultdict
 from itertools import cycle
 from pathlib import Path
 
+from jinja2 import Template
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "paths", metavar="N", type=str, nargs="+",
 )
 parser.add_argument("--list-orphans", default=False, action="store_true")
-parser.add_argument(
-    "--engine", default="dot", choices=ENGINES, action="store", type=str
-)
-parser.add_argument("--html", default=False, action="store_true")
 args = parser.parse_args()
 vertices, edges = set(), set()
 detail_map = defaultdict(dict)
@@ -94,29 +92,12 @@ else:
             ),
         )
     )
-    if args.html:
-        name2idx = {name: index for index, name in enumerate(vertices)}
-        with open("data.json", "w") as fl:
-            json.dump(
-                {
-                    "nodes": [
-                        {"id": name2idx[name], "name": name} for name in vertices
-                    ],
-                    "links": [
-                        {"source": name2idx[a], "target": name2idx[b]} for a, b in edges
-                    ],
-                },
-                fl,
-            )
-    else:
-
-        dot = Digraph(name="ClassTree", format="svg", engine=args.engine)
-        for k, v in colormap.items():
-            dot.node(k, color=v)
-        for v in vertices:
-            color = colormap[str(detail_map[v]["src_path"])]
-            dot.node(v, color=color)
-
-        for a, b in edges:
-            dot.edge(a, b)
-        dot.view()
+    name2idx = {name: index for index, name in enumerate(vertices)}
+    data = {
+        "nodes": [{"id": name2idx[name], "name": name} for name in vertices],
+        "links": [{"source": name2idx[a], "target": name2idx[b]} for a, b in edges],
+    }
+    with open("page.html", "r") as fl:
+        template = Template(fl.read())
+    with open("final.html", "w") as fl:
+        fl.write(template.render(plot_data=json.dumps(data)))

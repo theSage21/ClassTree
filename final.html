@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+  width = 1000 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+.append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+.append("g")
+  .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+
+var data={"nodes": [{"id": 0, "name": "FormView"}, {"id": 1, "name": "UpdatesTableView"}, {"id": 2, "name": "UserMixin"}, {"id": 3, "name": "NestedTableMixin"}, {"id": 4, "name": "BatchItemRemoveView"}, {"id": 5, "name": "UserFlagPermDetailView"}, {"id": 6, "name": "OrgUpdatesPermEditView"}, {"id": 7, "name": "FilterFormMixin"}, {"id": 8, "name": "BaseNestedColumn"}, {"id": 9, "name": "UpdatesNestedLevelTVSeasonTerritoryView"}, {"id": 10, "name": "View"}, {"id": 11, "name": "UpdatesFilterForm"}, {"id": 12, "name": "BooleanField2"}, {"id": 13, "name": "BatchRemoveAllView"}, {"id": 14, "name": "UserFlagPermEditView"}, {"id": 15, "name": "ApiCallDetailView"}, {"id": 16, "name": "BaseScheduleUpdatesServiceTypesColumn"}, {"id": 17, "name": "UpdatesPermForm"}, {"id": 18, "name": "Model"}, {"id": 19, "name": "BatchSendView"}, {"id": 20, "name": "GanttColumn"}, {"id": 21, "name": "UpdatesSyncExistingView"}, {"id": 22, "name": "OrgFlagPermEditView"}, {"id": 23, "name": "list"}, {"id": 24, "name": "OrgUpdatesPermDetailView"}, {"id": 25, "name": "UpdatesNestedLevelTerritoryView"}, {"id": 26, "name": "BatchExportView"}, {"id": 27, "name": "OrgFlagPermDetailView"}, {"id": 28, "name": "MultipleStructuredNestedTableMixin"}, {"id": 29, "name": "BaseForm"}, {"id": 30, "name": "TableMixin2"}, {"id": 31, "name": "ScheduleUpdatesNestedColumn"}, {"id": 32, "name": "BatchItemAddView"}, {"id": 33, "name": "BatchSaveView"}, {"id": 34, "name": "SelectMultipleField"}, {"id": 35, "name": "ScheduleUpdatesSubtypeGanttColumn"}, {"id": 36, "name": "PaginationError"}, {"id": 37, "name": "UpdatesNestedLevelPlatformView"}, {"id": 38, "name": "BaseNestedTableMixin"}, {"id": 39, "name": "ExpandLevelMixin"}, {"id": 40, "name": "UpdatesNestedView"}, {"id": 41, "name": "BatchesMixin"}, {"id": 42, "name": "<_ast.Attribute object at 0x7f7362f8da90>"}, {"id": 43, "name": "Column"}, {"id": 44, "name": "<_ast.Attribute object at 0x7f7362fcd518>"}, {"id": 45, "name": "UpdatesNestedLevelView"}, {"id": 46, "name": "ScheduleUpdatesGanttNestedColumn"}, {"id": 47, "name": "MappedSelectMultipleField"}, {"id": 48, "name": "ScheduleUpdatesNestedFilterArgsMixin"}, {"id": 49, "name": "UserUpdatesPermEditView"}, {"id": 50, "name": "ItemListView"}, {"id": 51, "name": "<_ast.Attribute object at 0x7f7362fb7320>"}, {"id": 52, "name": "UpdatesNestedLevelTVSeasonView"}, {"id": 53, "name": "ScheduleUpdatesGanttColumn"}, {"id": 54, "name": "PendingBatchListView"}, {"id": 55, "name": "LandingView"}, {"id": 56, "name": "NestedColumn"}, {"id": 57, "name": "ScheduleUpdatesGanttServiceTypeColumn"}, {"id": 58, "name": "UpdatesNestedLevelMovieTerritoryView"}, {"id": 59, "name": "ServiceSubtypeMixin"}, {"id": 60, "name": "AlulaScheduleUpdatesGanttNestedColumn"}, {"id": 61, "name": "AlulaScheduleUpdatesNestedColumn"}, {"id": 62, "name": "UpdatesListView"}, {"id": 63, "name": "CrumbsMixin"}, {"id": 64, "name": "UpdatesSpreadsheetView"}, {"id": 65, "name": "MainServiceTypeColumn"}, {"id": 66, "name": "BatchItemFilterForm"}, {"id": 67, "name": "ItemExportView"}, {"id": 68, "name": "UpdatesNestedLevelRetailersView"}, {"id": 69, "name": "UserUpdatesPermDetailView"}, {"id": 70, "name": "Timestamp"}, {"id": 71, "name": "BatchItemSaveView"}, {"id": 72, "name": "AddedView"}, {"id": 73, "name": "EmptyQuery"}, {"id": 74, "name": "TableMixin"}, {"id": 75, "name": "ListView"}, {"id": 76, "name": "ExportMixin"}, {"id": 77, "name": "Paginator"}, {"id": 78, "name": "BatchNewView"}, {"id": 79, "name": "<_ast.Attribute object at 0x7f7362fcd5c0>"}, {"id": 80, "name": "ScheduleUpdatesNestedServiceTypeColumn"}, {"id": 81, "name": "PendingBatchFilterForm"}, {"id": 82, "name": "UpdatesSyncNewView"}, {"id": 83, "name": "NextUrlMixin"}, {"id": 84, "name": "BatchFilterForm"}, {"id": 85, "name": "BatchListView"}, {"id": 86, "name": "BatchItemReUpdateView"}, {"id": 87, "name": "BaseServiceTypeColumn"}, {"id": 88, "name": "UpdatesSyncNewForm"}, {"id": 89, "name": "BooleanSelectMultipleField"}, {"id": 90, "name": "Crumb"}, {"id": 91, "name": "BatchClearView"}, {"id": 92, "name": "OrgMixin"}, {"id": 93, "name": "BaseTableMixin"}, {"id": 94, "name": "BatchView"}, {"id": 95, "name": "Exception"}, {"id": 96, "name": "UpdatesLandingView"}, {"id": 97, "name": "UpdateError"}, {"id": 98, "name": "OrgUpdatesPermForm"}], "links": [{"source": 43, "target": 57}, {"source": 92, "target": 50}, {"source": 43, "target": 20}, {"source": 45, "target": 68}, {"source": 38, "target": 28}, {"source": 7, "target": 62}, {"source": 10, "target": 94}, {"source": 75, "target": 85}, {"source": 94, "target": 71}, {"source": 30, "target": 62}, {"source": 2, "target": 94}, {"source": 53, "target": 35}, {"source": 60, "target": 46}, {"source": 38, "target": 3}, {"source": 40, "target": 45}, {"source": 42, "target": 34}, {"source": 95, "target": 36}, {"source": 83, "target": 82}, {"source": 8, "target": 61}, {"source": 18, "target": 97}, {"source": 43, "target": 87}, {"source": 76, "target": 26}, {"source": 10, "target": 21}, {"source": 61, "target": 60}, {"source": 84, "target": 81}, {"source": 92, "target": 55}, {"source": 75, "target": 50}, {"source": 63, "target": 85}, {"source": 94, "target": 13}, {"source": 10, "target": 64}, {"source": 75, "target": 62}, {"source": 94, "target": 91}, {"source": 7, "target": 50}, {"source": 76, "target": 67}, {"source": 41, "target": 85}, {"source": 92, "target": 85}, {"source": 45, "target": 52}, {"source": 10, "target": 15}, {"source": 34, "target": 47}, {"source": 7, "target": 71}, {"source": 92, "target": 94}, {"source": 10, "target": 86}, {"source": 62, "target": 72}, {"source": 0, "target": 82}, {"source": 51, "target": 11}, {"source": 94, "target": 33}, {"source": 93, "target": 38}, {"source": 10, "target": 96}, {"source": 70, "target": 97}, {"source": 92, "target": 62}, {"source": 43, "target": 56}, {"source": 2, "target": 62}, {"source": 85, "target": 26}, {"source": 85, "target": 54}, {"source": 83, "target": 94}, {"source": 84, "target": 66}, {"source": 31, "target": 46}, {"source": 94, "target": 78}, {"source": 94, "target": 19}, {"source": 5, "target": 69}, {"source": 45, "target": 37}, {"source": 29, "target": 17}, {"source": 29, "target": 84}, {"source": 94, "target": 32}, {"source": 59, "target": 35}, {"source": 83, "target": 86}, {"source": 62, "target": 40}, {"source": 41, "target": 50}, {"source": 63, "target": 50}, {"source": 16, "target": 80}, {"source": 44, "target": 12}, {"source": 34, "target": 89}, {"source": 79, "target": 47}, {"source": 43, "target": 8}, {"source": 10, "target": 55}, {"source": 25, "target": 58}, {"source": 22, "target": 6}, {"source": 23, "target": 73}, {"source": 74, "target": 85}, {"source": 2, "target": 64}, {"source": 61, "target": 31}, {"source": 50, "target": 67}, {"source": 27, "target": 24}, {"source": 7, "target": 85}, {"source": 29, "target": 98}, {"source": 43, "target": 65}, {"source": 25, "target": 9}, {"source": 20, "target": 53}, {"source": 94, "target": 4}, {"source": 63, "target": 62}, {"source": 45, "target": 25}, {"source": 87, "target": 16}, {"source": 62, "target": 1}, {"source": 92, "target": 96}, {"source": 14, "target": 49}, {"source": 74, "target": 50}, {"source": 29, "target": 88}, {"source": 92, "target": 64}]};
+function plotit() {
+
+  // Initialize the links
+  var link = svg
+    .selectAll("line")
+    .data(data.links)
+    .enter()
+    .append("line")
+      .style("stroke", "#000")
+
+  // Initialize the nodes
+  var node = svg
+    .selectAll("circle")
+    .data(data.nodes)
+    .enter()
+    .append("circle")
+      .attr("r", 20)
+      .style("fill", "#69b3a2")
+
+  // Let's list the force we wanna apply on the network
+  var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
+      .force("link", d3.forceLink()                               // This force provides links between nodes
+            .id(function(d) { return d.id; })                     // This provide  the id of a node
+            .links(data.links)                                    // and this the list of links
+      )
+      .force("charge", d3.forceManyBody().strength(-4))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+      .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+      .on("end", ticked);
+
+  // This function is run at each iteration of the force algorithm, updating the nodes position.
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node
+         .attr("cx", function (d) { return d.x+6; })
+         .attr("cy", function(d) { return d.y-6; });
+  }
+
+};
+plotit();
+
+
+</script>
